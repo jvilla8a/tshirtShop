@@ -1,74 +1,75 @@
-const express = require('express')
-const router  = express.Router()
+const express    = require('express')
+const Router     = express.Router()
+const Controller = require('../src/controllers')
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+Router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
 /* Departments Routes */
-router.get('/departments',                (req, res)=>{});
-router.get('/departments/:department_id', (req, res)=>{});
+Router.get('/departments',                Controller.Department.GetDepartments);
+Router.get('/departments/:department_id', Controller.Department.GetDepartment);
 
 /* Categories Routes */
-router.get('/categories',                             (req, res)=>{});
-router.get('/categories/:category_id',                (req, res)=>{});
-router.get('/categories/inProduct/:product_id',       (req, res)=>{});
-router.get('/categories/inDepartment/:department_id', (req, res)=>{});
+Router.get('/categories',                             (req, res)=>{});
+Router.get('/categories/:category_id',                (req, res)=>{});
+Router.get('/categories/inProduct/:product_id',       (req, res)=>{});
+Router.get('/categories/inDepartment/:department_id', (req, res)=>{});
 
 /* Attributes Routes */
-router.get('/attributes',                       (req, res)=>{});
-router.get('/attributes/:attribute_id',         (req, res)=>{});
-router.get('/attributes/vales/:attibute_id',    (req, res)=>{});
-router.get('/attributes/inProduct/:product_id', (req, res)=>{});
+Router.get('/attributes',                       (req, res)=>{});
+Router.get('/attributes/:attribute_id',         (req, res)=>{});
+Router.get('/attributes/vales/:attibute_id',    (req, res)=>{});
+Router.get('/attributes/inProduct/:product_id', (req, res)=>{});
 
 /* Products Routes */
-router.get('/products',                         (req, res)=>{});
-router.get('/products/search',                  (req, res)=>{});
-router.get('/products/:product_id',             (req, res)=>{});
-router.get('/products/inCategory/:category_id', (req, res)=>{});
-router.get('/products/:product_id/details',     (req, res)=>{});
-router.get('/products/:product_id/location',    (req, res)=>{});
-router.get('/products/:product_id/review',      (req, res)=>{});
-router.post('/products/:product_id/review',     (req, res)=>{});
+Router.get('/products',                         (req, res)=>{});
+Router.get('/products/search',                  (req, res)=>{});
+Router.get('/products/:product_id',             (req, res)=>{});
+Router.get('/products/inCategory/:category_id', (req, res)=>{});
+Router.get('/products/:product_id/details',     (req, res)=>{});
+Router.get('/products/:product_id/location',    (req, res)=>{});
+Router.get('/products/:product_id/review',      (req, res)=>{});
+Router.post('/products/:product_id/review',     (req, res)=>{});
 
 /* Customers Routes */
-router.put('/customer',            (req, res)=>{});
-router.get('/customer',            (req, res)=>{});
-router.post('/customers',          (req, res)=>{});
-router.post('/customers/login',    (req, res)=>{});
-router.post('/customers/facebook', (req, res)=>{});
-router.put('/customer/address',    (req, res)=>{});
-router.put('/customer/creditCard', (req, res)=>{});
+Router.put('/customer',            (req, res)=>{});
+Router.get('/customer',            (req, res)=>{});
+Router.post('/customers',          (req, res)=>{});
+Router.post('/customers/login',    (req, res)=>{});
+Router.post('/customers/facebook', (req, res)=>{});
+Router.put('/customer/address',    (req, res)=>{});
+Router.put('/customer/creditCard', (req, res)=>{});
 
 /* Orders Routes */
-router.post('/orders',                      (req, res)=>{});
-router.get('/orders/:order_id',             (req, res)=>{});
-router.get('/orders/inCustomer',            (req, res)=>{});
-router.get('/orders/shortDetail/:order_id', (req, res)=>{});
+Router.post('/orders',                      (req, res)=>{});
+Router.get('/orders/:order_id',             (req, res)=>{});
+Router.get('/orders/inCustomer',            (req, res)=>{});
+Router.get('/orders/shortDetail/:order_id', (req, res)=>{});
 
 /* ShoppingCart Routes */
-router.get('/shoppingcart/generateUniqueId',          (req, res)=>{});
-router.post('/shoppingcart/add',                      (req, res)=>{});
-router.get('/shoppingcart/:cart_id',                  (req, res)=>{});
-router.put('/shoppingcart/update/:item_id',           (req, res)=>{});
-router.delete('/shoppingcart/empty/:cart_id',         (req, res)=>{});
-router.get('/shoppingcart/moveToCart/:item_id',       (req, res)=>{});
-router.get('/shoppingcart/totalAmount/:cart_id',      (req, res)=>{});
-router.get('/shoppingcart/saveForLater/:item_id',     (req, res)=>{});
-router.get('/shoppingcart/getSaved/:cart_id',         (req, res)=>{});
-router.delete('/shoppingcart/removeProduct/:item_id', (req, res)=>{});
+Router.get('/shoppingcart/generateUniqueId',          (req, res)=>{});
+Router.post('/shoppingcart/add',                      (req, res)=>{});
+Router.get('/shoppingcart/:cart_id',                  (req, res)=>{});
+Router.put('/shoppingcart/update/:item_id',           (req, res)=>{});
+Router.delete('/shoppingcart/empty/:cart_id',         (req, res)=>{});
+Router.get('/shoppingcart/moveToCart/:item_id',       (req, res)=>{});
+Router.get('/shoppingcart/totalAmount/:cart_id',      (req, res)=>{});
+Router.get('/shoppingcart/saveForLater/:item_id',     (req, res)=>{});
+Router.get('/shoppingcart/getSaved/:cart_id',         (req, res)=>{});
+Router.delete('/shoppingcart/removeProduct/:item_id', (req, res)=>{});
 
 /* Taxes Routes */
-router.get('/tax',         (req, res)=>{});
-router.get('/tax/:tax_id', (req, res)=>{});
+Router.get('/tax',         (req, res)=>{});
+Router.get('/tax/:tax_id', (req, res)=>{});
 
 /* Shipping Routes */
-router.get('/shipping/regions',                     (req, res)=>{});
-router.get('/shipping/regions/:shipping_region_id', (req, res)=>{});
+Router.get('/shipping/regions',                     (req, res)=>{});
+Router.get('/shipping/regions/:shipping_region_id', (req, res)=>{});
 
 /* Stripes Routes */
-router.post('/stripe/charge',   (req, res)=>{});
-router.post('/stripe/webhooks', (req, res)=>{});
+Router.post('/stripe/charge',   (req, res)=>{});
+Router.post('/stripe/webhooks', (req, res)=>{});
 
-module.exports = router;
+module.exports = Router;
